@@ -1,6 +1,24 @@
 package service.impl;
 
+import entity.Student;
+import org.springframework.stereotype.Service;
+import repository.StudentRepository;
 import service.StudentService;
 
+import java.util.List;
+
+@Service
 public class StudentServiceImpl implements StudentService {
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        super();
+        this.studentRepository = studentRepository;
+    }
+
+    private StudentRepository studentRepository;
+
+    @Override
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
+    }
 }
